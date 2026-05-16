@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Violet">
+  <g fill="none" stroke="#7c3aed" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 32 32 C 22 26, 22 14, 32 10 C 42 14, 42 26, 32 32 Z"
+          transform="rotate(0 32 32)"/>
+    <path d="M 32 32 C 22 26, 22 14, 32 10 C 42 14, 42 26, 32 32 Z"
+          transform="rotate(72 32 32)"/>
+    <path d="M 32 32 C 22 26, 22 14, 32 10 C 42 14, 42 26, 32 32 Z"
+          transform="rotate(144 32 32)"/>
+    <path d="M 32 32 C 22 26, 22 14, 32 10 C 42 14, 42 26, 32 32 Z"
+          transform="rotate(216 32 32)"/>
+    <path d="M 32 32 C 22 26, 22 14, 32 10 C 42 14, 42 26, 32 32 Z"
+          transform="rotate(288 32 32)"/>
+  </g>
+  <circle cx="32" cy="32" r="3" fill="#7c3aed"/>
+</svg>

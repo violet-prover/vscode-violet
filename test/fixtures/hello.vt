@@ -1,0 +1,7 @@
+\import std/nat
+
+\let id = \x. x
+
+\data Nat \where
+  | zero
+  | succ : Nat -> Nat

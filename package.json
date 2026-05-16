@@ -1,0 +1,110 @@
+{
+  "name": "vscode-violet",
+  "displayName": "Violet",
+  "description": "Syntax highlighting for the Violet dependently-typed language",
+  "version": "0.1.0",
+  "publisher": "dannypsnl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/violet-prover/vscode-violet"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "violet",
+    "dependent types",
+    "proof assistant"
+  ],
+  "main": "./out/src/extension.js",
+  "activationEvents": [
+    "onLanguage:violet"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "violet",
+        "aliases": [
+          "Violet",
+          "violet"
+        ],
+        "extensions": [
+          ".vt"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/violet-file.svg",
+          "dark": "./icons/violet-file.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "violet",
+        "scopeName": "source.violet",
+        "path": "./syntaxes/violet.tmLanguage.json"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "violet",
+        "scopes": {
+          "keyword": [
+            "keyword"
+          ],
+          "operator": [
+            "keyword.operator"
+          ],
+          "comment": [
+            "comment"
+          ],
+          "string": [
+            "string"
+          ],
+          "number": [
+            "constant.numeric"
+          ],
+          "function": [
+            "entity.name.function"
+          ],
+          "type": [
+            "entity.name.type"
+          ],
+          "namespace": [
+            "entity.name.namespace"
+          ],
+          "variable": [
+            "variable"
+          ]
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -p . --watch",
+    "build:wasm": "bash scripts/build-wasm.sh",
+    "prepackage": "npm run compile && npm run build:wasm",
+    "package": "vsce package",
+    "test:grammar": "vscode-tmgrammar-test -g syntaxes/violet.tmLanguage.json 'test/grammar/*.test.vt'",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "web-tree-sitter": "^0.26.8"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "1.85.0",
+    "@vscode/test-electron": "^2.3.0",
+    "@vscode/vsce": "^2.24.0",
+    "glob": "^13.0.6",
+    "mocha": "^11.7.5",
+    "typescript": "^5.3.0",
+    "vscode-tmgrammar-test": "^0.1.3"
+  }
+}

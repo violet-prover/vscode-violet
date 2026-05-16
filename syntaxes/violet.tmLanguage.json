@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.violet",
+  "name": "Violet",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#declaration" },
+    { "include": "#keyword" },
+    { "include": "#lambda" },
+    { "include": "#operator" },
+    { "include": "#number" },
+    { "include": "#punctuation" },
+    { "include": "#identifier" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.number-sign.violet",
+      "match": "#.*$"
+    },
+    "string": {
+      "name": "string.quoted.double.violet",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        { "name": "constant.character.escape.violet", "match": "\\\\." }
+      ]
+    },
+    "declaration": {
+      "patterns": [
+        {
+          "match": "(\\\\let)\\s+([A-Za-z_][A-Za-z0-9_'-]*)",
+          "captures": {
+            "1": { "name": "keyword.control.violet" },
+            "2": { "name": "entity.name.function.violet" }
+          }
+        },
+        {
+          "match": "(\\\\(?:data|record))\\s+([A-Za-z_][A-Za-z0-9_'-]*)",
+          "captures": {
+            "1": { "name": "keyword.control.violet" },
+            "2": { "name": "entity.name.type.violet" }
+          }
+        }
+      ]
+    },
+    "keyword": {
+      "name": "keyword.control.violet",
+      "match": "\\\\(import|export|universe|let|data|record|operator|where|open|elim|intro|split|stronger_than|weaker_than|same_as|associativity|left|right|none)\\b"
+    },
+    "lambda": {
+      "name": "keyword.operator.lambda.violet",
+      "match": "\\\\(?=[A-Za-z_(])"
+    },
+    "operator": {
+      "name": "keyword.operator.violet",
+      "match": "->|<=|=>"
+    },
+    "number": {
+      "name": "constant.numeric.violet",
+      "match": "\\b[0-9]+\\b"
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.bracket.violet", "match": "[(){}\\[\\]]" },
+        { "name": "punctuation.separator.violet", "match": "[:|/.,?=]" }
+      ]
+    },
+    "identifier": {
+      "name": "variable.other.violet",
+      "match": "[A-Za-z_][A-Za-z0-9_'-]*"
+    }
+  }
+}

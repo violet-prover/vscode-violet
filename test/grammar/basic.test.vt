@@ -1,0 +1,15 @@
+# SYNTAX TEST "source.violet" "basic violet syntax"
+
+\let id = \x. x
+# <- keyword.control.violet
+#    ^^ entity.name.function.violet
+#       ^ punctuation.separator.violet
+#         ^ keyword.operator.lambda.violet
+
+# this is a comment
+# <- comment.line.number-sign.violet
+
+\data Nat \where
+# <- keyword.control.violet
+#     ^^^ entity.name.type.violet
+#         ^^^^^^ keyword.control.violet
