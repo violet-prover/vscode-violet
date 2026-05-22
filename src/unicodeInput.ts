@@ -91,6 +91,8 @@ export function registerUnicodeInput(context: vscode.ExtensionContext): void {
       const editor = vscode.window.activeTextEditor;
       if (!editor) return;
 
+      // Load every invocation so user-defined symbols pick up settings changes
+      // without an explicit reload listener.
       const symbols = loadAllSymbols(context);
       const recents = new Recents(context.globalState);
 
