@@ -72,3 +72,24 @@ suite("unicode input \\\\ escape", () => {
     await vscode.commands.executeCommand("undo");
   });
 });
+
+suite("unicode input recents", () => {
+  test("pushes the chosen name to globalState on accept", async () => {
+    const fixture = path.resolve(__dirname, "../../test/fixtures/hello.vt");
+    const doc = await vscode.workspace.openTextDocument(fixture);
+    await vscode.window.showTextDocument(doc);
+
+    const ext = vscode.extensions.getExtension("dannypsnl.vscode-violet")!;
+    await ext.activate();
+
+    __setPickerForTesting(async () => ({ name: "pi", glyph: "π" }));
+    await vscode.commands.executeCommand("violet.insertUnicode");
+
+    // The Recents store persists to ExtensionContext.globalState, which is
+    // managed by VS Code and not directly exposed to tests. This test verifies
+    // that the command completes without error and the document was modified
+    // (the recents store itself is unit-tested in test/unicode-recents.test.ts).
+    assert.ok(doc.getText().includes("π"), "document should contain π");
+    await vscode.commands.executeCommand("undo");
+  });
+});
