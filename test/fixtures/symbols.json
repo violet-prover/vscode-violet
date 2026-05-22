@@ -1,0 +1,5 @@
+[
+  { "name": "pi", "glyph": "π", "aliases": ["Gpi"] },
+  { "name": "to", "glyph": "→", "aliases": ["rightarrow", "->"] },
+  { "name": "forall", "glyph": "∀" }
+]

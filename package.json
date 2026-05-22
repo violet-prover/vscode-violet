@@ -21,7 +21,8 @@
   ],
   "main": "./out/src/extension.js",
   "activationEvents": [
-    "onLanguage:violet"
+    "onLanguage:violet",
+    "onCommand:violet.insertUnicode"
   ],
   "contributes": {
     "languages": [
@@ -81,7 +82,43 @@
           ]
         }
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "violet.insertUnicode",
+        "title": "Violet: Insert Unicode Symbol"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "violet.insertUnicode",
+        "key": "\\",
+        "when": "editorTextFocus && editorLangId == violet && !suggestWidgetVisible && !inQuickOpen"
+      }
+    ],
+    "configuration": {
+      "title": "Violet",
+      "properties": {
+        "violet.unicodeInput.userSymbols": {
+          "type": "array",
+          "default": [],
+          "description": "User-defined unicode symbols. Each entry: { name, glyph, aliases? }. User entries override built-ins with the same name.",
+          "items": {
+            "type": "object",
+            "required": ["name", "glyph"],
+            "properties": {
+              "name": { "type": "string", "description": "Canonical name shown in the picker." },
+              "glyph": { "type": "string", "description": "The unicode character(s) inserted." },
+              "aliases": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Alternate names searched by the picker."
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "scripts": {
     "compile": "tsc -p .",
