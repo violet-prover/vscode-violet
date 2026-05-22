@@ -8,6 +8,23 @@ VSCode extension providing syntax highlighting for the Violet dependently-typed 
 - TextMate grammar (keywords, comments, operators, strings, numbers)
 - Semantic tokens via the sibling [tree-sitter-violet](https://github.com/violet-prover/tree-sitter-violet) grammar — distinguishes `let`-defined names, `data`/`record` types, imported namespaces, and user-defined operator tokens
 - File icon for `.vt`
+- Unicode input picker — press `\` in a `.vt` file to open a searchable picker showing each symbol (Π, Σ, λ, ∀, →, …) before you commit. Recently used symbols appear at the top. Type `\\` to insert a literal backslash.
+
+## Unicode input
+
+Press `\` while editing a `.vt` file to open the unicode picker. Type a name (`Pi`, `forall`, `to`, `lambda`, …) or an alias to filter. Enter inserts the symbol at every cursor. Recently used symbols are pinned at the top.
+
+To type a literal backslash, press `\` twice: the first opens the picker, the second dismisses it and inserts a `\`.
+
+Add your own mappings in settings:
+
+```jsonc
+"violet.unicodeInput.userSymbols": [
+  { "name": "myop", "glyph": "⊕", "aliases": ["circplus"] }
+]
+```
+
+A font with broad unicode coverage (e.g. JuliaMono, Fira Code, JetBrains Mono with Symbols Nerd Font) is recommended.
 
 ## Requirements
 
