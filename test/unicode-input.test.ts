@@ -4,6 +4,7 @@ import * as vscode from "vscode";
 import {
   __setPickerForTesting,
   __clearPickerForTesting,
+  LiteralBackslash,
 } from "../src/unicodeInput";
 import { Symbol } from "../src/unicodeSymbols";
 
@@ -51,5 +52,23 @@ suite("unicode input command", () => {
     await vscode.commands.executeCommand("violet.insertUnicode");
 
     assert.strictEqual(doc.getText(), before);
+  });
+});
+
+suite("unicode input \\\\ escape", () => {
+  test("inserts literal backslash when picker reports LiteralBackslash", async () => {
+    const fixture = path.resolve(__dirname, "../../test/fixtures/hello.vt");
+    const doc = await vscode.workspace.openTextDocument(fixture);
+    await vscode.window.showTextDocument(doc);
+    const before = doc.getText();
+
+    __setPickerForTesting(async () => LiteralBackslash);
+    await vscode.commands.executeCommand("violet.insertUnicode");
+
+    const after = doc.getText();
+    assert.notStrictEqual(after, before);
+    assert.ok(after.includes("\\"), `expected backslash in document, got: ${JSON.stringify(after)}`);
+
+    await vscode.commands.executeCommand("undo");
   });
 });
