@@ -9,6 +9,7 @@ type PickResult = UnicodeSymbol | typeof LiteralBackslash | undefined;
 type Picker = (symbols: UnicodeSymbol[], recentCount: number) => Promise<PickResult>;
 
 let pickerOverride: Picker | undefined;
+let loadErrorShown = false;
 
 export function __setPickerForTesting(p: Picker): void {
   pickerOverride = p;
@@ -38,29 +39,34 @@ function defaultPicker(symbols: UnicodeSymbol[], recentCount: number): Promise<P
     picker.matchOnDetail = true;
     picker.placeholder = "Search by name (e.g. Pi, forall, to). Type \\ for a literal backslash.";
 
-    const items: Array<vscode.QuickPickItem & { symbol?: UnicodeSymbol }> = [];
-    symbols.forEach((s, i) => {
-      if (i === recentCount && recentCount > 0) {
-        items.push({ label: "more", kind: vscode.QuickPickItemKind.Separator });
-      }
-      items.push({
-        label: s.glyph,
-        description: s.name,
-        detail: (s.aliases ?? []).join(", "),
-        symbol: s,
-      });
-    });
-    if (recentCount > 0) {
-      items.unshift({ label: "recent", kind: vscode.QuickPickItemKind.Separator });
-    }
-    picker.items = items;
+    const plainItems = symbols.map((s) => ({
+      label: s.glyph,
+      description: s.name,
+      detail: (s.aliases ?? []).join(", "),
+      symbol: s as UnicodeSymbol | undefined,
+    }));
+
+    const separatedItems: Array<vscode.QuickPickItem & { symbol?: UnicodeSymbol }> =
+      recentCount > 0
+        ? [
+            { label: "recent", kind: vscode.QuickPickItemKind.Separator },
+            ...plainItems.slice(0, recentCount),
+            { label: "more", kind: vscode.QuickPickItemKind.Separator },
+            ...plainItems.slice(recentCount),
+          ]
+        : plainItems;
+
+    picker.items = separatedItems;
 
     picker.onDidChangeValue((v) => {
       if (v === "\\") {
         resolved = true;
         picker.hide();
         resolve(LiteralBackslash);
+        return;
       }
+      // Strip separators while filtering; restore them when the filter clears.
+      picker.items = v.length === 0 ? separatedItems : plainItems;
     });
     picker.onDidAccept(() => {
       const selected = picker.selectedItems[0];
@@ -82,7 +88,14 @@ function loadAllSymbols(context: vscode.ExtensionContext): UnicodeSymbol[] {
   const userRaw = vscode.workspace
     .getConfiguration("violet.unicodeInput")
     .get<UnicodeSymbol[]>("userSymbols", []);
-  return mergeSymbols(builtIn, userRaw);
+  const merged = mergeSymbols(builtIn, userRaw);
+  if (merged.length === 0 && !loadErrorShown) {
+    loadErrorShown = true;
+    void vscode.window.showErrorMessage(
+      "Violet: failed to load unicode symbol table. The picker has no symbols."
+    );
+  }
+  return merged;
 }
 
 export function registerUnicodeInput(context: vscode.ExtensionContext): void {
@@ -96,9 +109,10 @@ export function registerUnicodeInput(context: vscode.ExtensionContext): void {
       const symbols = loadAllSymbols(context);
       const recents = new Recents(context.globalState);
 
-      const orderedSymbols = orderByRecents(symbols, recents.list());
+      const recentNames = recents.list();
+      const orderedSymbols = orderByRecents(symbols, recentNames);
       const pick = pickerOverride ?? defaultPicker;
-      const chosen = await pick(orderedSymbols, recents.list().length);
+      const chosen = await pick(orderedSymbols, recentNames.length);
       if (chosen === undefined) return;
 
       const text = chosen === LiteralBackslash ? "\\" : chosen.glyph;

@@ -56,6 +56,10 @@ suite("unicode input command", () => {
 });
 
 suite("unicode input \\\\ escape", () => {
+  teardown(() => {
+    __clearPickerForTesting();
+  });
+
   test("inserts literal backslash when picker reports LiteralBackslash", async () => {
     const fixture = path.resolve(__dirname, "../../test/fixtures/hello.vt");
     const doc = await vscode.workspace.openTextDocument(fixture);
@@ -67,13 +71,17 @@ suite("unicode input \\\\ escape", () => {
 
     const after = doc.getText();
     assert.notStrictEqual(after, before);
-    assert.ok(after.includes("\\"), `expected backslash in document, got: ${JSON.stringify(after)}`);
+    assert.strictEqual(after.length, before.length + 1, "exactly one character should be inserted");
 
     await vscode.commands.executeCommand("undo");
   });
 });
 
 suite("unicode input recents", () => {
+  teardown(() => {
+    __clearPickerForTesting();
+  });
+
   test("pushes the chosen name to globalState on accept", async () => {
     const fixture = path.resolve(__dirname, "../../test/fixtures/hello.vt");
     const doc = await vscode.workspace.openTextDocument(fixture);
