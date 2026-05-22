@@ -38,3 +38,23 @@ export function loadSymbols(jsonPath: string): Symbol[] {
   }
   return out;
 }
+
+export function mergeSymbols(base: Symbol[], user: Symbol[]): Symbol[] {
+  const byName = new Map<string, Symbol>();
+  for (const s of base) byName.set(s.name, s);
+  for (const entry of user) {
+    if (!entry || typeof entry !== "object") continue;
+    if (typeof entry.name !== "string" || entry.name.length === 0) continue;
+    if (typeof entry.glyph !== "string" || entry.glyph.length === 0) continue;
+    const aliases =
+      Array.isArray(entry.aliases) && entry.aliases.every((a) => typeof a === "string")
+        ? entry.aliases
+        : undefined;
+    byName.set(entry.name, {
+      name: entry.name,
+      glyph: entry.glyph,
+      ...(aliases ? { aliases } : {}),
+    });
+  }
+  return Array.from(byName.values());
+}
