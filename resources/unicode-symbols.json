@@ -1,4 +1,8 @@
 [
+  { "name": "uu", "glyph": "𝓤" },
+  { "name": "uv", "glyph": "𝓥" },
+  { "name": "uw", "glyph": "𝓦" },
+  { "name": "ut", "glyph": "𝓣" },
   { "name": "alpha", "glyph": "α" },
   { "name": "beta", "glyph": "β" },
   { "name": "gamma", "glyph": "γ" },
