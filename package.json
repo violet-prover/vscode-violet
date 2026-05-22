@@ -21,7 +21,8 @@
   ],
   "main": "./out/src/extension.js",
   "activationEvents": [
-    "onLanguage:violet"
+    "onLanguage:violet",
+    "onCommand:violet.insertUnicode"
   ],
   "contributes": {
     "languages": [
@@ -80,6 +81,12 @@
             "variable"
           ]
         }
+      }
+    ],
+    "commands": [
+      {
+        "command": "violet.insertUnicode",
+        "title": "Violet: Insert Unicode Symbol"
       }
     ]
   },
