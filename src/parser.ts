@@ -15,10 +15,10 @@ export async function getParser(extensionPath: string): Promise<Parser> {
     })();
   }
   if (!languagePromise) {
-    languagePromise = (async () => {
-      const wasmPath = path.join(extensionPath, "resources", "tree-sitter-violet.wasm");
-      return Language.load(wasmPath);
-    })();
+    // Wait for Parser.init to set up the WebAssembly loader before Language.load uses it.
+    languagePromise = parserPromise.then(() =>
+      Language.load(path.join(extensionPath, "resources", "tree-sitter-violet.wasm"))
+    );
   }
   const [parser, language] = await Promise.all([parserPromise, languagePromise]);
   if (parser.language !== language) {
