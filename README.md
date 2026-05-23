@@ -16,7 +16,7 @@ VSCode extension for the Violet language. Provides syntax highlighting and acts 
 The extension launches `violet lsp` as a child process and talks JSON-RPC over stdio. Configure the binary path in your settings if `violet` isn't on your PATH:
 
 ```jsonc
-"violet.serverPath": "/path/to/violet/_build/install/default/bin/violet"
+"violet.serverPath": "/path/to/violet"
 ```
 
 Other settings:
