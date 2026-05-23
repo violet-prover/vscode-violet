@@ -1,6 +1,6 @@
 # vscode-violet
 
-VSCode extension providing syntax highlighting for the Violet dependently-typed language.
+VSCode extension for the Violet language. Provides syntax highlighting and acts as an LSP client to `violet lsp`.
 
 ## Features
 
@@ -9,6 +9,22 @@ VSCode extension providing syntax highlighting for the Violet dependently-typed 
 - Semantic tokens via the sibling [tree-sitter-violet](https://github.com/violet-prover/tree-sitter-violet) grammar — distinguishes `let`-defined names, `data`/`record` types, imported namespaces, and user-defined operator tokens
 - File icon for `.vt`
 - Unicode input picker — press `\` in a `.vt` file to open a searchable picker showing each symbol (Π, Σ, λ, ∀, →, …) before you commit. Recently used symbols appear at the top. Type `\\` to insert a literal backslash.
+- **Language server features** (via the `violet` CLI's `lsp` subcommand): diagnostics, goto-definition, hover, find references.
+
+## Language server
+
+The extension launches `violet lsp` as a child process and talks JSON-RPC over stdio. Configure the binary path in your settings if `violet` isn't on your PATH:
+
+```jsonc
+"violet.serverPath": "/path/to/violet/_build/install/default/bin/violet"
+```
+
+Other settings:
+
+- `violet.lsp.enable` (default `true`) — disable to skip starting the server.
+- `violet.serverArgs` (default `["lsp"]`) — extra args passed to the binary.
+
+Command: **Violet: Restart Language Server** restarts the server (e.g. after rebuilding the binary).
 
 ## Unicode input
 

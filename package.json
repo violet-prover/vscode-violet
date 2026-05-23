@@ -2,7 +2,7 @@
   "name": "vscode-violet",
   "displayName": "Violet",
   "description": "Syntax highlighting for the Violet dependently-typed language",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "dannypsnl",
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   "main": "./out/src/extension.js",
   "activationEvents": [
     "onLanguage:violet",
-    "onCommand:violet.insertUnicode"
+    "onCommand:violet.insertUnicode",
+    "onCommand:violet.restartServer"
   ],
   "contributes": {
     "languages": [
@@ -87,6 +88,10 @@
       {
         "command": "violet.insertUnicode",
         "title": "Violet: Insert Unicode Symbol"
+      },
+      {
+        "command": "violet.restartServer",
+        "title": "Violet: Restart Language Server"
       }
     ],
     "keybindings": [
@@ -99,6 +104,22 @@
     "configuration": {
       "title": "Violet",
       "properties": {
+        "violet.lsp.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the Violet language server (diagnostics, goto-definition, hover, find references). Disable to fall back to grammar-only highlighting."
+        },
+        "violet.serverPath": {
+          "type": "string",
+          "default": "violet",
+          "description": "Path to the `violet` binary that provides the language server. Defaults to `violet` on PATH; set to an absolute path (e.g. `/path/to/violet/_build/install/default/bin/violet`) to use a locally built copy."
+        },
+        "violet.serverArgs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["lsp"],
+          "description": "Arguments passed to the `violet` binary to start the language server."
+        },
         "violet.unicodeInput.userSymbols": {
           "type": "array",
           "default": [],
@@ -130,6 +151,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "dependencies": {
+    "vscode-languageclient": "^9.0.1",
     "web-tree-sitter": "^0.26.8"
   },
   "devDependencies": {
