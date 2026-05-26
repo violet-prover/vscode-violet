@@ -73,5 +73,7 @@
   { "name": "langle", "glyph": "⟨", "aliases": ["<"] },
   { "name": "rangle", "glyph": "⟩", "aliases": [">"] },
   { "name": "llbracket", "glyph": "⟦", "aliases": ["[["] },
-  { "name": "rrbracket", "glyph": "⟧", "aliases": ["]]"] }
+  { "name": "rrbracket", "glyph": "⟧", "aliases": ["]]"] },
+  { "name": "triangleleft", "glyph": "◁", "aliases": ["lhd", "<|"] },
+  { "name": "triangleright", "glyph": "▷", "aliases": ["rhd", "|>"] }
 ]
