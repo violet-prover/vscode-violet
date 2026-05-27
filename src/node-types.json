@@ -1,0 +1,1437 @@
+[
+  {
+    "type": "associativity",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "atom",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "hole",
+          "named": true
+        },
+        {
+          "type": "lambda",
+          "named": true
+        },
+        {
+          "type": "parens_term",
+          "named": true
+        },
+        {
+          "type": "record_literal",
+          "named": true
+        },
+        {
+          "type": "record_update",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "clause",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      },
+      "head": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "con_pattern",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imp_var_pattern",
+          "named": true
+        },
+        {
+          "type": "record_pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "con_pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constructor",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "data_decl",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "signature": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "explicit_binder",
+          "named": true
+        },
+        {
+          "type": "implicit_binder",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "elim_header",
+    "named": true,
+    "fields": {
+      "head": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "explicit_binder",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "export_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "field_decl",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "hole",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "imp_var_pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "implicit_binder",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "implicit_pi",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "implicit_binder",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_decl",
+    "named": true,
+    "fields": {
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "lambda",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "explicit_binder",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_binder",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "let_decl",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "signature": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "explicit_binder",
+          "named": true
+        },
+        {
+          "type": "implicit_binder",
+          "named": true
+        },
+        {
+          "type": "where_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "open_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "operator_decl",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      },
+      "template": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "operator_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "operator_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_associativity",
+          "named": true
+        },
+        {
+          "type": "option_same_as",
+          "named": true
+        },
+        {
+          "type": "option_stronger_than",
+          "named": true
+        },
+        {
+          "type": "option_weaker_than",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "option_associativity",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "associativity",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "option_same_as",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "option_stronger_than",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "option_weaker_than",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parens_term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pi_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "explicit_binder",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "projection",
+    "named": true,
+    "fields": {
+      "base": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          }
+        ]
+      },
+      "field": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "qualified_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_decl",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "signature": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "explicit_binder",
+          "named": true
+        },
+        {
+          "type": "field_decl",
+          "named": true
+        },
+        {
+          "type": "implicit_binder",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "con_pattern",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imp_var_pattern",
+          "named": true
+        },
+        {
+          "type": "record_pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_update",
+    "named": true,
+    "fields": {
+      "base": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "implicit_pi",
+            "named": true
+          },
+          {
+            "type": "pi_type",
+            "named": true
+          },
+          {
+            "type": "projection",
+            "named": true
+          },
+          {
+            "type": "qualified_name",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "universe_join",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_pi",
+          "named": true
+        },
+        {
+          "type": "pi_type",
+          "named": true
+        },
+        {
+          "type": "projection",
+          "named": true
+        },
+        {
+          "type": "qualified_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "universe_join",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "data_decl",
+          "named": true
+        },
+        {
+          "type": "export_decl",
+          "named": true
+        },
+        {
+          "type": "import_decl",
+          "named": true
+        },
+        {
+          "type": "let_decl",
+          "named": true
+        },
+        {
+          "type": "operator_decl",
+          "named": true
+        },
+        {
+          "type": "record_decl",
+          "named": true
+        },
+        {
+          "type": "universe_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stack_move",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "universe_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "where_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "clause",
+          "named": true
+        },
+        {
+          "type": "elim_header",
+          "named": true
+        },
+        {
+          "type": "open_clause",
+          "named": true
+        },
+        {
+          "type": "stack_move",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "=>",
+    "named": false
+  },
+  {
+    "type": "?",
+    "named": false
+  },
+  {
+    "type": "\\",
+    "named": false
+  },
+  {
+    "type": "\\associativity",
+    "named": false
+  },
+  {
+    "type": "\\data",
+    "named": false
+  },
+  {
+    "type": "\\elim",
+    "named": false
+  },
+  {
+    "type": "\\export",
+    "named": false
+  },
+  {
+    "type": "\\import",
+    "named": false
+  },
+  {
+    "type": "\\intro",
+    "named": false
+  },
+  {
+    "type": "\\left",
+    "named": false
+  },
+  {
+    "type": "\\let",
+    "named": false
+  },
+  {
+    "type": "\\none",
+    "named": false
+  },
+  {
+    "type": "\\open",
+    "named": false
+  },
+  {
+    "type": "\\operator",
+    "named": false
+  },
+  {
+    "type": "\\record",
+    "named": false
+  },
+  {
+    "type": "\\right",
+    "named": false
+  },
+  {
+    "type": "\\same_as",
+    "named": false
+  },
+  {
+    "type": "\\split",
+    "named": false
+  },
+  {
+    "type": "\\stronger_than",
+    "named": false
+  },
+  {
+    "type": "\\universe",
+    "named": false
+  },
+  {
+    "type": "\\weaker_than",
+    "named": false
+  },
+  {
+    "type": "\\where",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "string",
+    "named": true
+  },
+  {
+    "type": "symbol",
+    "named": true
+  },
+  {
+    "type": "universe_join",
+    "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]
