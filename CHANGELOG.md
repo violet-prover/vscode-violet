@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Unicode input: `triangleleft` (◁) and `triangleright` (▷) symbols
+- Fix TextMate grammar identifier patterns to support Unicode characters (Greek letters, mathematical symbols, etc.)
 
 ## [0.3.0]
 

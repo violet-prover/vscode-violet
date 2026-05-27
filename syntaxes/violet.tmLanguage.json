@@ -29,14 +29,14 @@
     "declaration": {
       "patterns": [
         {
-          "match": "(\\\\let)\\s+([A-Za-z_][A-Za-z0-9_'-]*)",
+          "match": "(\\\\let)\\s+([\\p{L}_][\\p{L}0-9_'-]*)",
           "captures": {
             "1": { "name": "keyword.control.violet" },
             "2": { "name": "entity.name.function.violet" }
           }
         },
         {
-          "match": "(\\\\(?:data|record))\\s+([A-Za-z_][A-Za-z0-9_'-]*)",
+          "match": "(\\\\(?:data|record))\\s+([\\p{L}_][\\p{L}0-9_'-]*)",
           "captures": {
             "1": { "name": "keyword.control.violet" },
             "2": { "name": "entity.name.type.violet" }
@@ -50,7 +50,7 @@
     },
     "lambda": {
       "name": "keyword.operator.lambda.violet",
-      "match": "\\\\(?=[A-Za-z_(])"
+      "match": "\\\\(?=[\\p{L}_(])"
     },
     "operator": {
       "name": "keyword.operator.violet",
@@ -68,7 +68,7 @@
     },
     "identifier": {
       "name": "variable.other.violet",
-      "match": "[A-Za-z_][A-Za-z0-9_'-]*"
+      "match": "[\\p{L}_][\\p{L}0-9_'-]*"
     }
   }
 }
