@@ -1,0 +1,21 @@
+[
+  { "name": "let", "body": "\\let ${1:name} : ${2:Type} => ${0}", "detail": "let definition" },
+  { "name": "data", "body": "\\data ${1:Name} : ${2:𝓤}\n  | ${3:ctor} : ${0:Name}", "detail": "data type", "aliases": ["inductive"] },
+  { "name": "record", "body": "\\record ${1:Name} : ${2:𝓤}\n  | ${3:field} : ${0}", "detail": "record type" },
+  { "name": "import", "body": "\\import ${0:std/nat}", "detail": "import module" },
+  { "name": "export", "body": "\\export ${0:Name}", "detail": "export" },
+  { "name": "open", "body": "\\open ${0:Module}", "detail": "open module" },
+  { "name": "universe", "body": "\\universe ${0:𝓤}", "detail": "universe variable" },
+  { "name": "operator", "body": "\\operator \"${1}\" => ${0}", "detail": "operator notation" },
+  { "name": "where", "body": "\\where\n  ${0}", "detail": "where clause block" },
+  { "name": "elim", "body": "\\elim ${0:target}", "detail": "eliminate" },
+  { "name": "intro", "body": "\\intro", "detail": "intro" },
+  { "name": "split", "body": "\\split", "detail": "split" },
+  { "name": "associativity", "body": "\\associativity: ${0:\\left}", "detail": "fixity: associativity" },
+  { "name": "stronger_than", "body": "\\stronger_than: ${0}", "detail": "fixity: stronger than" },
+  { "name": "weaker_than", "body": "\\weaker_than: ${0}", "detail": "fixity: weaker than" },
+  { "name": "same_as", "body": "\\same_as: ${0}", "detail": "fixity: same as" },
+  { "name": "left", "body": "\\left", "detail": "fixity: left" },
+  { "name": "right", "body": "\\right", "detail": "fixity: right" },
+  { "name": "none", "body": "\\none", "detail": "fixity: none" }
+]

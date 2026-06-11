@@ -5,8 +5,10 @@ import {
   __setPickerForTesting,
   __clearPickerForTesting,
   LiteralBackslash,
+  recentsFor,
 } from "../src/unicodeInput";
 import { Symbol } from "../src/unicodeSymbols";
+import { Snippet } from "../src/snippets";
 
 suite("unicode input command", () => {
   suiteSetup(async () => {
@@ -98,6 +100,54 @@ suite("unicode input recents", () => {
     // that the command completes without error and the document was modified
     // (the recents store itself is unit-tested in test/unicode-recents.test.ts).
     assert.ok(doc.getText().includes("π"), "document should contain π");
+    await vscode.commands.executeCommand("undo");
+  });
+});
+
+suite("recents namespacing", () => {
+  test("reads glyph-namespaced entries for the glyph kind", () => {
+    assert.deepStrictEqual(
+      recentsFor("glyph", ["glyph:pi", "snippet:data", "glyph:to"]),
+      ["pi", "to"]
+    );
+  });
+
+  test("reads snippet-namespaced entries for the snippet kind", () => {
+    assert.deepStrictEqual(
+      recentsFor("snippet", ["glyph:pi", "snippet:data", "snippet:let"]),
+      ["data", "let"]
+    );
+  });
+
+  test("treats legacy unprefixed entries as glyphs", () => {
+    assert.deepStrictEqual(recentsFor("glyph", ["pi", "to"]), ["pi", "to"]);
+    assert.deepStrictEqual(recentsFor("snippet", ["pi", "to"]), []);
+  });
+});
+
+suite("snippet input", () => {
+  teardown(() => {
+    __clearPickerForTesting();
+  });
+
+  test("expands the chosen snippet at the cursor", async () => {
+    const fixture = path.resolve(__dirname, "../../test/fixtures/hello.vt");
+    const doc = await vscode.workspace.openTextDocument(fixture);
+    await vscode.window.showTextDocument(doc);
+    const before = doc.getText();
+
+    const chosen: Snippet = { name: "let", body: "\\let ${1:name} = ${0}" };
+    __setPickerForTesting(async () => chosen);
+
+    await vscode.commands.executeCommand("violet.insertUnicode");
+
+    const after = doc.getText();
+    assert.notStrictEqual(after, before);
+    assert.ok(
+      after.includes("\\let name = "),
+      `expected expanded snippet in document, got: ${JSON.stringify(after)}`
+    );
+
     await vscode.commands.executeCommand("undo");
   });
 });

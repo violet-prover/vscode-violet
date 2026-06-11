@@ -87,7 +87,7 @@
     "commands": [
       {
         "command": "violet.insertUnicode",
-        "title": "Violet: Insert Unicode Symbol"
+        "title": "Violet: Insert Symbol or Snippet"
       },
       {
         "command": "violet.restartServer",
@@ -135,6 +135,25 @@
                 "items": { "type": "string" },
                 "description": "Alternate names searched by the picker."
               }
+            }
+          }
+        },
+        "violet.snippetInput.userSnippets": {
+          "type": "array",
+          "default": [],
+          "description": "User-defined keyword snippets. Each entry: { name, body, aliases?, detail? }. `body` uses VS Code snippet syntax (e.g. \"\\\\let ${1:name} = ${0}\"). User entries override built-ins with the same name.",
+          "items": {
+            "type": "object",
+            "required": ["name", "body"],
+            "properties": {
+              "name": { "type": "string", "description": "Keyword shown in the picker." },
+              "body": { "type": "string", "description": "VS Code snippet body inserted (supports ${1:..} tab stops)." },
+              "aliases": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Alternate names searched by the picker."
+              },
+              "detail": { "type": "string", "description": "Optional one-line description shown in the picker." }
             }
           }
         }

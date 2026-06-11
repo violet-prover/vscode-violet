@@ -1,0 +1,6 @@
+[
+  { "name": "let", "body": "\\let ${1:name} = ${0}" },
+  { "name": "data", "body": "\\data ${1:Name} \\where\n  | ${0}", "aliases": ["inductive"], "detail": "inductive type" },
+  { "name": "nobody" },
+  { "name": "badbody", "body": 5 }
+]

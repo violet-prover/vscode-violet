@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Keyword snippets in the `\` picker: type a keyword (`let`, `data`, `record`, …) to insert a Violet construct that expands with interactive tab stops
+  - User-defined snippets via `violet.snippetInput.userSnippets` setting
+  - Insert command renamed to **Violet: Insert Symbol or Snippet**
 - Unicode input: `triangleleft` (◁) and `triangleright` (▷) symbols
 - Fix TextMate grammar identifier patterns to support Unicode characters (Greek letters, mathematical symbols, etc.)
 

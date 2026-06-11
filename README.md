@@ -9,6 +9,7 @@ VSCode extension for the Violet language. Provides syntax highlighting and acts 
 - Semantic tokens via the sibling [tree-sitter-violet](https://github.com/violet-prover/tree-sitter-violet) grammar — distinguishes `let`-defined names, `data`/`record` types, imported namespaces, and user-defined operator tokens
 - File icon for `.vt`
 - Unicode input picker — press `\` in a `.vt` file to open a searchable picker showing each symbol (Π, Σ, λ, ∀, →, …) before you commit. Recently used symbols appear at the top. Type `\\` to insert a literal backslash.
+- Keyword snippets — the same `\` picker can insert Violet constructs (`\let`, `\data`, `\record`, …) that expand with interactive tab stops.
 - **Language server features** (via the `violet` CLI's `lsp` subcommand): diagnostics, goto-definition, hover, find references.
 
 ## Language server
@@ -41,6 +42,25 @@ Add your own mappings in settings:
 ```
 
 A font with broad unicode coverage (e.g. JuliaMono, Fira Code, JetBrains Mono with Symbols Nerd Font) is recommended.
+
+### Keyword snippets
+
+The same `\` picker also lists Violet keyword snippets. Type a keyword to filter and select one to insert a construct that expands with interactive tab stops — press `Tab` to jump between fields. For example, `data` inserts:
+
+```
+\data Name : 𝓤
+  | ctor : Name
+```
+
+with the cursor on `Name` first. Built-in snippets cover the keyword set (`let`, `data`, `record`, `import`, `open`, `operator`, `where`, `elim`, `intro`, `split`, fixity words, …).
+
+Add your own snippets in settings (`body` uses VS Code snippet syntax):
+
+```jsonc
+"violet.snippetInput.userSnippets": [
+  { "name": "lemma", "body": "\\let ${1:name} : ${2:Type} => ${0}", "detail": "lemma skeleton" }
+]
+```
 
 ## Requirements
 
