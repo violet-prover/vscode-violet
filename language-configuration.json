@@ -2,6 +2,10 @@
   "comments": {
     "lineComment": "#"
   },
+  "wordPattern": {
+    "pattern": "[\\p{L}_][\\p{L}\\p{N}_'-]*",
+    "flags": "u"
+  },
   "brackets": [
     ["(", ")"],
     ["{", "}"],

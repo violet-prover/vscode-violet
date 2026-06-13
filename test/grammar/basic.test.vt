@@ -13,3 +13,9 @@
 # <- keyword.control.violet
 #     ^^^ entity.name.type.violet
 #         ^^^^^^ keyword.control.violet
+
+# hyphenated identifiers are a single token
+\let is-section = is-section
+# <- keyword.control.violet
+#    ^^^^^^^^^^ entity.name.function.violet
+#                 ^^^^^^^^^^ variable.other.violet
