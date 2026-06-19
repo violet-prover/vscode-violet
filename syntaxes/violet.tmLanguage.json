@@ -29,7 +29,7 @@
     "declaration": {
       "patterns": [
         {
-          "match": "(\\\\let)\\s+([\\p{L}_][\\p{L}0-9_'-]*)",
+          "match": "(\\\\(?:let|axiom))\\s+([\\p{L}_][\\p{L}0-9_'-]*)",
           "captures": {
             "1": { "name": "keyword.control.violet" },
             "2": { "name": "entity.name.function.violet" }
@@ -46,7 +46,7 @@
     },
     "keyword": {
       "name": "keyword.control.violet",
-      "match": "\\\\(import|export|universe|let|data|record|operator|where|open|elim|intro|split|stronger_than|weaker_than|same_as|associativity|left|right|none)\\b"
+      "match": "\\\\(import|export|universe|let|data|record|operator|where|open|elim|intro|split|stronger_than|weaker_than|same_as|associativity|left|right|none|with|axiom)\\b"
     },
     "lambda": {
       "name": "keyword.operator.lambda.violet",
