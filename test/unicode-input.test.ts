@@ -1,19 +1,30 @@
 import * as assert from "assert";
 import * as path from "path";
 import * as vscode from "vscode";
-import {
-  __setPickerForTesting,
-  __clearPickerForTesting,
-  LiteralBackslash,
-  recentsFor,
-} from "../src/unicodeInput";
+import type { VioletApi } from "../src/extension";
+import { recentsFor } from "../src/unicodeInput";
 import { Symbol } from "../src/unicodeSymbols";
 import { Snippet } from "../src/snippets";
 
+// The extension ships bundled, so the running command and the tsc-compiled test
+// code are separate module copies. Reach the *running* instance's picker hooks
+// (and its LiteralBackslash symbol) through the activated extension's exports;
+// pulling them from "../src/unicodeInput" would mutate state nothing reads.
+let __setPickerForTesting: VioletApi["__setPickerForTesting"];
+let __clearPickerForTesting: VioletApi["__clearPickerForTesting"];
+let LiteralBackslash: VioletApi["LiteralBackslash"];
+
+async function activateApi(): Promise<void> {
+  const ext = vscode.extensions.getExtension("dannypsnl.vscode-violet")!;
+  const api = await ext.activate();
+  __setPickerForTesting = api.__setPickerForTesting;
+  __clearPickerForTesting = api.__clearPickerForTesting;
+  LiteralBackslash = api.LiteralBackslash;
+}
+
 suite("unicode input command", () => {
   suiteSetup(async () => {
-    const ext = vscode.extensions.getExtension("dannypsnl.vscode-violet")!;
-    await ext.activate();
+    await activateApi();
   });
 
   teardown(() => {

@@ -1,19 +1,19 @@
+# The extension is bundled into out/extension.js (see esbuild.js), so we ship
+# only that file plus assets — not node_modules or the per-module tsc output.
 .vscode/**
 .vscode-test/**
+.github/**
 src/**
 test/**
 scripts/**
+out/**
+!out/extension.js
+node_modules/**
+esbuild.js
 **/tsconfig.json
 **/.eslintrc.json
 **/*.map
 **/*.ts
 **/.gitignore
 **/.gitkeep
-out/test/**
-out/parser.js
-out/parser.js.map
-node_modules/**/test/**
-node_modules/**/*.md
-node_modules/**/*.d.ts
-node_modules/**/*.d.cts
-node_modules/**/debug/**
+*.vsix

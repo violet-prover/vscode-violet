@@ -8,8 +8,10 @@ export async function getParser(extensionPath: string): Promise<Parser> {
   if (!parserPromise) {
     parserPromise = (async () => {
       await Parser.init({
+        // Shipped into resources/ at build time (scripts/build-wasm.sh) so the
+        // bundled .vsix does not need node_modules at runtime.
         locateFile: () =>
-          path.join(extensionPath, "node_modules", "web-tree-sitter", "web-tree-sitter.wasm"),
+          path.join(extensionPath, "resources", "web-tree-sitter.wasm"),
       });
       return new Parser();
     })();
