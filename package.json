@@ -1,7 +1,7 @@
 {
   "name": "vscode-violet",
   "displayName": "Violet",
-  "description": "Syntax highlighting for the Violet dependently-typed language",
+  "description": "Language support for the Violet dependently-typed proof assistant: LSP client (diagnostics, hover, goto-definition, references), semantic highlighting, unicode input, and snippets.",
   "version": "0.4.0",
   "publisher": "dannypsnl",
   "license": "MIT",
