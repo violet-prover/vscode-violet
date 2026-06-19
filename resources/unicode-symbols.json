@@ -75,5 +75,11 @@
   { "name": "llbracket", "glyph": "⟦", "aliases": ["[["] },
   { "name": "rrbracket", "glyph": "⟧", "aliases": ["]]"] },
   { "name": "triangleleft", "glyph": "◁", "aliases": ["lhd", "<|"] },
-  { "name": "triangleright", "glyph": "▷", "aliases": ["rhd", "|>"] }
+  { "name": "triangleright", "glyph": "▷", "aliases": ["rhd", "|>"] },
+  { "name": "circ", "glyph": "∘", "aliases": ["comp", "ring"] },
+  { "name": "sim", "glyph": "∼", "aliases": ["homotopy"] },
+  { "name": "blacksquare", "glyph": "∎", "aliases": ["qed"] },
+  { "name": "ratio", "glyph": "∶", "aliases": ["suchthat"] },
+  { "name": "mid", "glyph": "∣", "aliases": ["divides"] },
+  { "name": "vdash", "glyph": "⊢", "aliases": ["turnstile"] }
 ]
