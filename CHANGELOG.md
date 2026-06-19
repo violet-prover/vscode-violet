@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- More unicode input for notation glyphs
+- Highlight `\with` and `\axiom` keywords; `\axiom` names now highlight as definitions, and both have `\`-picker snippets
 - Keyword snippets in the `\` picker: type a keyword (`let`, `data`, `record`, …) to insert a Violet construct that expands with interactive tab stops
   - User-defined snippets via `violet.snippetInput.userSnippets` setting
   - Insert command renamed to **Violet: Insert Symbol or Snippet**
