@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.4.1]
+
+- fix description of extension
+- add LICENSE
+
 ## [0.4.0]
 
 - More unicode input for notation glyphs
