@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      # Set these as repository secrets to enable publishing. If a secret is
+      # missing the corresponding publish step is skipped, so packaging +
+      # GitHub Release still work without any marketplace credentials.
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_PAT: ${{ secrets.OVSX_PAT }}
     steps:
       - name: Checkout vscode-violet
         uses: actions/checkout@v4
@@ -41,6 +47,16 @@ jobs:
             npm install
           fi
 
+      - name: Verify tag matches package.json version
+        working-directory: vscode-violet
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          if [ "$tag" != "$pkg" ]; then
+            echo "::error::tag v$tag does not match package.json version $pkg"
+            exit 1
+          fi
+
       - name: Package .vsix
         working-directory: vscode-violet
         run: npm run package
@@ -49,3 +65,13 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: vscode-violet/*.vsix
+
+      - name: Publish to VS Code Marketplace
+        if: ${{ env.VSCE_PAT != '' }}
+        working-directory: vscode-violet
+        run: npx --yes @vscode/vsce publish --packagePath *.vsix
+
+      - name: Publish to Open VSX
+        if: ${{ env.OVSX_PAT != '' }}
+        working-directory: vscode-violet
+        run: npx --yes ovsx publish *.vsix -p "$OVSX_PAT"

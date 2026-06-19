@@ -2,7 +2,7 @@
   "name": "vscode-violet",
   "displayName": "Violet",
   "description": "Syntax highlighting for the Violet dependently-typed language",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "dannypsnl",
   "repository": {
     "type": "git",

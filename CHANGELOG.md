@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.4.0]
+
 - More unicode input for notation glyphs
 - Highlight `\with` and `\axiom` keywords; `\axiom` names now highlight as definitions, and both have `\`-picker snippets
 - Keyword snippets in the `\` picker: type a keyword (`let`, `data`, `record`, …) to insert a Violet construct that expands with interactive tab stops
