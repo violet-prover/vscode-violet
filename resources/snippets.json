@@ -1,7 +1,9 @@
 [
   { "name": "let", "body": "\\let ${1:name} : ${2:Type} => ${0}", "detail": "let definition" },
+  { "name": "axiom", "body": "\\axiom ${1:name} : ${0:Type}", "detail": "axiom declaration" },
   { "name": "data", "body": "\\data ${1:Name} : ${2:𝓤}\n  | ${3:ctor} : ${0:Name}", "detail": "data type", "aliases": ["inductive"] },
   { "name": "record", "body": "\\record ${1:Name} : ${2:𝓤}\n  | ${3:field} : ${0}", "detail": "record type" },
+  { "name": "with", "body": "{ ${1:base} \\with ${2:field} => ${0} }", "detail": "record update" },
   { "name": "import", "body": "\\import ${0:std/nat}", "detail": "import module" },
   { "name": "export", "body": "\\export ${0:Name}", "detail": "export" },
   { "name": "open", "body": "\\open ${0:Module}", "detail": "open module" },
