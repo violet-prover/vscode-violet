@@ -35,7 +35,8 @@
           "violet"
         ],
         "extensions": [
-          ".vt"
+          ".vt",
+          ".vt.scrbl"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
