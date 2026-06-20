@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.5.0]
+
 - Recognize `*.vt.scrbl` files
 
 ## [0.4.1]
